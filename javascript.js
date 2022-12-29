@@ -102,7 +102,9 @@ function game() {
 
 
 const allButtons = document.querySelectorAll('.choice');
-let currentScoreLog = document.createElement('div');
+let currentScoreLog = document.createElement('div');    
+
+
 
 allButtons.forEach((button) => { 
     button.addEventListener('click', () => {
@@ -113,8 +115,36 @@ allButtons.forEach((button) => {
 });
 
 function updateScore() { 
-    currentScoreLog.textContent = `Current Score: 
+    if (gamesWonByUser == 5 || gamesWonByComputer == 5) {
+        end();
+    } else { 
+        currentScoreLog.textContent = `Current Score: 
+        User: ${gamesWonByUser}
+        Computer: ${gamesWonByComputer}`;
+        results.append(currentScoreLog);
+    }
+}
+
+function end() { 
+    let endScore = document.createElement('div');
+    let endAnnouncement = document.createElement('div');
+    endScore.textContent = `Game Over! 
+    Final Score: 
     User: ${gamesWonByUser}
     Computer: ${gamesWonByComputer}`;
-    results.append(currentScoreLog);
+
+    if (gamesWonByUser > gamesWonByComputer) { 
+        endAnnouncement.textContent = "You won!";
+    } else {
+        endAnnouncement.textContent = "You lost!";
+    }
+
+    results.append(endScore);
+    results.append(endAnnouncement);
+
+    allButtons.forEach((button) => {
+        button.disabled = 'true';
+    });
+
+
 }
