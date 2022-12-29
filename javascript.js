@@ -142,9 +142,11 @@ function end() {
     results.append(endScore);
     results.append(endAnnouncement);
 
+    disableButtons();
+}
+
+function disableButtons() {
     allButtons.forEach((button) => {
         button.disabled = 'true';
     });
-
-
 }
