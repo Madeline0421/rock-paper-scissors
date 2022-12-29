@@ -102,16 +102,19 @@ function game() {
 
 
 const allButtons = document.querySelectorAll('.choice');
+let currentScoreLog = document.createElement('div');
 
 allButtons.forEach((button) => { 
     button.addEventListener('click', () => {
     const userChoice = button.textContent;
     playRound(userChoice, getComputerChoice);
-    console.log(`Current Score: 
-    User: ${gamesWonByUser}
-    Computer: ${gamesWonByComputer}`);
+    updateScore();
     });
 });
 
-
-
+function updateScore() { 
+    currentScoreLog.textContent = `Current Score: 
+    User: ${gamesWonByUser}
+    Computer: ${gamesWonByComputer}`;
+    results.append(currentScoreLog);
+}
