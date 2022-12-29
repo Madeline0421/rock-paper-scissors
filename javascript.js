@@ -22,7 +22,8 @@ function getUserChoice() {
 const results = document.querySelector('.results');
 
 function playRound(playerSelection) {
-    let result =document.createElement('result');
+    let result =document.createElement('div');
+    result.className = 'result';
     /*
     rock > scissors > paper > rock 
     */
